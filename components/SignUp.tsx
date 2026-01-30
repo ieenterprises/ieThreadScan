@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -81,7 +80,7 @@ const SignUp: React.FC<{ onNavigate: (page: 'signin' | 'app') => void }> = ({ on
             <button 
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all flex items-center justify-center disabled:opacity-50"
+              className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center disabled:opacity-50"
             >
               {isLoading ? 'Creating Account...' : 'Sign Up'}
               {!isLoading && <ArrowRight className="w-5 h-5 ml-2" />}
@@ -91,7 +90,7 @@ const SignUp: React.FC<{ onNavigate: (page: 'signin' | 'app') => void }> = ({ on
 
         <p className="text-center text-gray-600 mt-8">
           Already have an account?{' '}
-          <button onClick={() => onNavigate('signin')} className="font-bold text-gray-800 hover:underline">Sign In</button>
+          <button onClick={() => onNavigate('signin')} className="font-bold text-blue-600 hover:underline">Sign In</button>
         </p>
       </div>
     </div>

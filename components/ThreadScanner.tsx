@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   Camera, 
@@ -160,7 +159,7 @@ const ThreadScanner: React.FC<{ onSave: (scan: SavedScan) => void }> = ({ onSave
           <div className="flex flex-col items-center">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
               step === s ? 'bg-blue-600 text-white shadow-md ring-4 ring-blue-100' : 
-              step > s ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-500'
+              step > s ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-500' // Changed from emerald-500 to blue-500 for consistency
             }`}>
               {step > s ? <CheckCircle2 className="w-6 h-6" /> : s}
             </div>
@@ -172,7 +171,7 @@ const ThreadScanner: React.FC<{ onSave: (scan: SavedScan) => void }> = ({ onSave
           </div>
           {s < 4 && (
             <div className={`flex-1 h-1 mx-2 rounded-full ${
-              step > s ? 'bg-emerald-500' : 'bg-slate-200'
+              step > s ? 'bg-blue-500' : 'bg-slate-200' // Changed from emerald-500 to blue-500 for consistency
             }`} />
           )}
         </React.Fragment>
@@ -513,7 +512,7 @@ const ThreadScanner: React.FC<{ onSave: (scan: SavedScan) => void }> = ({ onSave
                     analysisResult.findings.map((finding, idx) => (
                       <div key={idx} className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm">
                         <div className="flex justify-between mb-2">
-                          <span className="text-sm font-bold">{finding.defectType}</span>
+                          <span className="sm font-bold">{finding.defectType}</span>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-tight ${
                             finding.severity === 'High' ? 'bg-red-100 text-red-700' : 
                             finding.severity === 'Medium' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'
@@ -548,7 +547,7 @@ const ThreadScanner: React.FC<{ onSave: (scan: SavedScan) => void }> = ({ onSave
             Back
           </button>
           {step === Step.REPORT ? (
-            <button onClick={resetScanner} className="flex items-center gap-2 bg-slate-900 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-slate-800 transition-all active:scale-95">
+            <button onClick={resetScanner} className="flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all active:scale-95">
               <RotateCcw className="w-4 h-4" />
               New Inspection
             </button>
@@ -558,7 +557,7 @@ const ThreadScanner: React.FC<{ onSave: (scan: SavedScan) => void }> = ({ onSave
               <ArrowRight className="w-4 h-4" />
             </button>
           ) : step === Step.CAPTURE && images.length > 0 ? (
-             <button onClick={() => setStep(Step.REVIEW)} className="flex items-center gap-2 bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-emerald-700 transition-all active:scale-95">
+             <button onClick={() => setStep(Step.REVIEW)} className="flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-all active:scale-95">
               Review Captures
               <ArrowRight className="w-4 h-4" />
             </button>
