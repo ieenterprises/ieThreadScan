@@ -11,8 +11,9 @@ import ThreadScanner from './components/ThreadScanner';
 import Dashboard from './components/Dashboard';
 import AssetHistory from './components/AssetHistory';
 import Settings from './components/Settings';
+import { IELogo } from './components/IELogo'; // Import the new logo component
 
-import { ShieldCheck, LayoutDashboard, History, Settings as SettingsIcon, Scan, LogOut } from 'lucide-react';
+import { LayoutDashboard, History, Settings as SettingsIcon, Scan, LogOut } from 'lucide-react';
 import { AppView, SavedScan } from './types';
 
 type Page = 'landing' | 'signin' | 'signup' | 'app';
@@ -66,7 +67,6 @@ const App: React.FC = () => {
           userId: user.uid,
           timestamp: serverTimestamp()
         });
-        // Optimistically update UI, or refetch
         setHistory(prev => [{ ...scan, id: docRef.id, timestamp: Date.now(), userId: user.uid } as SavedScan, ...prev]);
       } catch (e) {
         console.error("Error adding document: ", e);
@@ -83,7 +83,7 @@ const App: React.FC = () => {
   };
   
   if (isLoadingAuth) {
-    return <div className="min-h-screen flex items-center justify-center bg-gray-900">Loading...</div>; // Or a proper splash screen
+    return <div className="min-h-screen flex items-center justify-center bg-gray-900">Loading...</div>;
   }
 
   if (!user) {
@@ -106,9 +106,7 @@ const App: React.FC = () => {
             className="flex items-center space-x-2 cursor-pointer"
             onClick={() => setCurrentView(AppView.SCANNER)}
           >
-            <div className="bg-gray-600 p-1.5 rounded-lg">
-              <ShieldCheck className="w-6 h-6 text-white" />
-            </div>
+            <IELogo className="w-8 h-8" /> 
             <span className="text-xl font-bold tracking-tight">ieThreadScan</span>
           </div>
           
@@ -170,7 +168,6 @@ const App: React.FC = () => {
           )}
           {currentView === AppView.HISTORY && (
             <AssetHistory history={history} onClear={() => {
-              // TODO: Implement Firestore history clearing
               setHistory([]); 
             }} />
           )}

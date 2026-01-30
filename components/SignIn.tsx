@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { ShieldCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { IELogo } from './IELogo'; // Import the new logo component
 
 const SignIn: React.FC<{ onNavigate: (page: 'signup' | 'app') => void }> = ({ onNavigate }) => {
   const [email, setEmail] = useState('');
@@ -29,7 +30,7 @@ const SignIn: React.FC<{ onNavigate: (page: 'signup' | 'app') => void }> = ({ on
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="inline-block bg-gray-800 p-3 rounded-xl mb-4">
-            <ShieldCheck className="w-10 h-10 text-white" />
+            <IELogo className="w-10 h-10" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900">Sign In to ieThreadScan</h1>
           <p className="text-gray-600 mt-2">Welcome back, please enter your details.</p>
