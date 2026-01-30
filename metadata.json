@@ -1,0 +1,7 @@
+{
+  "name": "AI Thread Inspector",
+  "description": "An advanced computer vision tool for industrial thread connection inspection, identifying defects such as galling, corrosion, and damaged threads using high-precision AI analysis.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
