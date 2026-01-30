@@ -20,7 +20,13 @@ type Page = 'landing' | 'signin' | 'signup' | 'app';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [currentPage, setCurrentPage] = useState<Page>('landing');
+  const [currentPage, setCurrentPage] = useState<Page>(() => {
+    const storedPage = sessionStorage.getItem('currentPage');
+    if (storedPage === 'signin' || storedPage === 'signup') {
+        return storedPage as Page;
+    }
+    return 'landing';
+  });
   const [isLoadingAuth, setIsLoadingAuth] = useState(true);
   
   const [currentView, setCurrentView] = useState<AppView>(AppView.SCANNER);
@@ -35,9 +41,10 @@ const App: React.FC = () => {
       if (user) {
         setUser(user);
         setCurrentPage('app');
+        sessionStorage.removeItem('currentPage');
       } else {
         setUser(null);
-        setCurrentPage('landing');
+        setCurrentPage(prevPage => prevPage === 'app' ? 'landing' : prevPage);
       }
       setIsLoadingAuth(false);
     });
@@ -81,6 +88,11 @@ const App: React.FC = () => {
   };
 
   const handleNavigate = (page: Page) => {
+    if (page === 'signin' || page === 'signup') {
+      sessionStorage.setItem('currentPage', page);
+    } else {
+      sessionStorage.removeItem('currentPage');
+    }
     setCurrentPage(page);
   };
   
