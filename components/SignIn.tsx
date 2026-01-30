@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft, RotateCcw } from 'lucide-react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { IELogo } from './IELogo'; // Import the new logo component
 
-const SignIn: React.FC<{ onNavigate: (page: 'signup' | 'app') => void }> = ({ onNavigate }) => {
+const SignIn: React.FC<{ onNavigate: (page: 'signup' | 'app' | 'landing') => void }> = ({ onNavigate }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -25,7 +25,23 @@ const SignIn: React.FC<{ onNavigate: (page: 'signup' | 'app') => void }> = ({ on
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center p-4">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center p-4 relative">
+        <div className="absolute top-8 left-8 flex gap-4">
+            <button
+                onClick={() => onNavigate('landing')}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 bg-white border border-slate-200 rounded-lg shadow-sm hover:bg-slate-50 transition-all"
+            >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+            </button>
+            <button
+                onClick={() => window.location.reload()}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 bg-white border border-slate-200 rounded-lg shadow-sm hover:bg-slate-50 transition-all"
+            >
+                <RotateCcw className="w-4 h-4" />
+                Refresh
+            </button>
+        </div>
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="inline-block mb-4">
