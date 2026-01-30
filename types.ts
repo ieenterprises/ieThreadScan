@@ -17,8 +17,17 @@ export type Finding = {
 };
 
 export type AnalysisResult = {
-  findings: Finding[];
   summary: string;
+  classification: {
+    predictedThreadType: string;
+    confidence: number;
+  };
+  dimensions: {
+    pitch_mm: number;
+    crestWidth_mm: number;
+    rootWidth_mm: number;
+  };
+  findings: Finding[];
 };
 
 export type SavedScan = {
