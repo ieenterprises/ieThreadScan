@@ -28,6 +28,8 @@ export type AnalysisResult = {
     rootWidth_mm: number;
   };
   findings: Finding[];
+  measurement: string;
+  treadDimension: string;
 };
 
 export type SavedScan = {
