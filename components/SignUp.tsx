@@ -30,7 +30,7 @@ const SignUp: React.FC<{ onNavigate: (page: 'signin' | 'app') => void }> = ({ on
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-4">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center p-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <div className="inline-block bg-gray-800 p-3 rounded-xl mb-4">
